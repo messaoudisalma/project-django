@@ -13,3 +13,5 @@ class Basket():
         if 'skey' not in request.session:
             basket = self.session['skey'] = {}
         self.basket = basket
+    
+    #comment
