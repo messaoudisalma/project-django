@@ -29,11 +29,6 @@ class Basket():
 
         self.save()
 
-    def __len__(self):
-        """
-        Get the basket data and count the qty of items
-        """
-        return sum(item['qty'] for item in self.basket.values())
     
     def __iter__(self):
         """
@@ -51,6 +46,12 @@ class Basket():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['qty']
             yield item
+
+    def __len__(self):
+        """
+        Get the basket data and count the qty of items
+        """
+        return sum(item['qty'] for item in self.basket.values())
 
     def update(self, product, qty):
         """

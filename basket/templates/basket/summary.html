@@ -101,14 +101,14 @@
       success: function (json) {
         $('.product-item[data-index="' + prodid + '"]').remove();
 
-          if(json.qty == 0){
+           if(json.qty == 0){
             total = 0
             subtotal = 0
           }
           else{
             total = (parseFloat(json.subtotal) + 11.50).toFixed(2);
             subtotal = json.subtotal
-          }
+          } 
 
         document.getElementById("subtotal").innerHTML = subtotal;
         document.getElementById("basket-qty").innerHTML = json.qty;
