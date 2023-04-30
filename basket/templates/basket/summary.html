@@ -87,16 +87,16 @@
 
 <script>
   // Delete Item
-  $(document).on("click", ".delete-button", function (e) {
+  $(document).on('click', '.delete-button', function (e) {
     e.preventDefault();
-    var prodid = $(this).data("index");
+    var prodid = $(this).data('index');
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: '{% url "basket:basket_delete" %}',
       data: {
-        productid: $(this).data("index"),
+        productid: $(this).data('index'),
         csrfmiddlewaretoken: "{{csrf_token}}",
-        action: "post",
+        action: 'post',
       },
       success: function (json) {
         $('.product-item[data-index="' + prodid + '"]').remove();
@@ -119,17 +119,17 @@
   });
 
   // Update Item
-  $(document).on("click", ".update-button", function (e) {
+  $(document).on('click', '.update-button', function (e) {
     e.preventDefault();
-    var prodid = $(this).data("index");
+    var prodid = $(this).data('index');
     $.ajax({
-      type: "POST",
+      type: 'POST',
       url: '{% url "basket:basket_update" %}',
       data: {
-        productid: $(this).data("index"),
-        productqty: $("#select" + prodid + " option:selected").text(),
+        productid: $(this).data('index'),
+        productqty: $('#select' + prodid + ' option:selected').text(),
         csrfmiddlewaretoken: "{{csrf_token}}",
-        action: "post",
+        action: 'post',
       },
       success: function (json) {
 
