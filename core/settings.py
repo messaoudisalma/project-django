@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'store',
     'basket',
     'account',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
