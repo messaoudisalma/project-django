@@ -1,0 +1,116 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}About us{% endblock %}
+{% block content %}
+<main>
+    <!-- Page Content -->
+    <div class="page-heading about-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h4>about us</h4>
+                        <h2>our company</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="best-features about-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Our Background</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-image">
+                        <img src="{% static 'store/assets/images/feature-image.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="left-content">
+                        <h4>Who we are &amp; What we do?</h4>
+                        <p>BookStore is a community for both books and other products of every point of knowledge. Our philosophy is based on information, communication and education.<br><br>We believe in the power of knowledge. So our goal is to help those who supply it and share it with those who crave it. Which is why every action we take, and every book purchase you make helps fund it.</p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="team-members">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Purpose</h2>
+              </div>
+            </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="services" id="ab">
+        <div class="container">
+            <div class="row">
+                <div class="team-members">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="team-member">
+                                    <div class="thumb-container">
+                                        <img src="{% static 'store/assets/images/givelife.jpg' %}" alt="">
+                                    <div class="hover-effect">
+                                <div class="hover-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-content bg-white">
+                        <h4>Give life to reading</h4>
+                        <p>We seek out new ideas and bold actions as we embrace and create change.
+                        And among these ideas: to offer readers the convenience of shopping online, and to provide various books in the field of computer science.</p><br><br><br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <img src="{% static 'store/assets/images/seed.jpg' %}" alt="">
+                        <div class="hover-effect">
+                            <div class="hover-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-content bg-white">
+                        <h4>Seed of knowledge</h4>
+                        <p>Do yourself a favor; find more wonder in your life. And, as Francis says, you will be planting the seeds of knowledge, learning and growth, and this is what this site offers you.</p><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <img src="{% static 'store/assets/images/best.jpg' %}" alt="">
+                        <div class="hover-effect">
+                            <div class="hover-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-content bg-white">
+                        <h4>Best for bookworms</h4>
+                        <p>Like so many other arts, the world of books must adapt to life online. It is to be hoped that since radio has not been supplanted by television and television has not been supplanted by the Internet, there is still room for the beloved book in the modern world.our site presents a selection of books that viewers will love, especially bookworms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

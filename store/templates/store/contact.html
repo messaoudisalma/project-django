@@ -1,0 +1,129 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Contact us{% endblock %}
+{% block content %}
+<main>
+    <!-- Page Content -->
+    <div class="page-heading contact-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h4>contact us</h4>
+                        <h2>let’s get in touch</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to change your own map point
+      1. Go to Google Maps
+      2. Click on your location point
+      3. Click "Share" and choose "Embed map" tab
+      4. Copy only URL and paste it within the src="" field below
+  -->
+    <div class="find-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Our Location on Maps</h2>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3395.3557208083453!2d-8.04169902517933!3d31.678842039296864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafedf484ed184f%3A0x1dd60f2be29706f8!2sEKBlocks!5e0!3m2!1sfr!2sma!4v1684186236545!5m2!1sfr!2sma" width="730" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="left-content">
+                        <h4>Informations</h4>
+                        <p>For inquiries, you can contact us at <a href="mailto: contact@ekblocks.com"> contact@ekblocks.com </a> or call us at <a href="tel: 0808697208"> (+212) 808 697208 </a> .</p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="send-message">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>Send us a Message</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="contact-form">
+                            <form id="contact" action="" method="post">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="accordion">
+                            <li>
+                                <a>What is BookStore?</a>
+                                <div class="content">
+                                    <p>BookStore is an e-commerce application that allows you to order books 24 hours a day, from any computer or mobile, buyers no longer need to go to the store to buy their products.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a>In which countries can I use BookStore?</a>
+                                <div class="content">
+                                    <p>You can use BookStore in almost every country in the world.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a>A product is missing from my basket, what should I do?</a>
+                                <div class="content">
+                                    <p>Even if we do our best to ensure that our service is perfect, these small incidents can happen and we apologize for them. If you encounter any errors, contact our friendly customer service.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a>How to contact BookStore?</a>
+                                <div class="content">
+                                    <p>Find all the contact methods according to your needs (social networks, etc.) on our page 'Contact us'.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</main>
+{% endblock %}
