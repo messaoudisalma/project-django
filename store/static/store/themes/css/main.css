@@ -3,7 +3,7 @@
 .feature_box{
 	margin-bottom:20px;	
 }
-.feature_box h4{
+.feature_box h5{
 	margin:0 0 10px 0;
 	font-weight:normal;	
 }
@@ -16,7 +16,7 @@
 	border-radius: 50%;
 }
 .feature_box .service{	
-	margin: top 50px;
+	margin-top:3px;
 	padding:3px;	
 	text-align:center;
 }

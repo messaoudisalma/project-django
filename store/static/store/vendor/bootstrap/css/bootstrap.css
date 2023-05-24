@@ -483,6 +483,11 @@ mark,
   height: auto;
 }
 
+.imagefluidA {
+  max-width: 20%;
+  height: auto;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;

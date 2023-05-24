@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5i8cq!!4o7&99q+4m)nowe&$5w%q%07p1h!meq09m$e%_+jaa5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account',
     'django_countries',
     'payment',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,9 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Basket session ID
+BASKET_SESSION_ID = 'basket'
 
 # Custom user model
 AUTH_USER_MODEL = 'account.UserBase'

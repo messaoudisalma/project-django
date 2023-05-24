@@ -20,17 +20,18 @@
   }
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid pt-5">
     <div class="row no-gutter">
         <div class="col-md-12">
             <div class="login d-flex align-items-center py-5">
                 <div class="container">
                     <div class="row">
                         <div id="payment-form" class="col-12 col-lg-6 mx-auto">
-                            <h3 class="mb-3">Billing address</h3>
-                            <!-- Error messages in this element -->
-                            <div id="card-errors" class="a" role="alert"></div>
                             <form>
+                                <h3 class="mb-3">Billing address</h3>
+                                <!-- Error messages in this element -->
+                                <div id="card-errors" class="a" role="alert"></div>
+                            
                                 <div class="row g-3">
                                     <div class="col-sm-7">
                                         <label for="firstName" class="form-label">Customer Name</label>
@@ -62,20 +63,20 @@
                                         <label for="country" class="form-label">Country</label>
                                         <select class="form-select" id="country" required>
                                             <option value="">Choose...</option>
-                                            <option>United States</option>
+                                            <option>Morroco</option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="state" class="form-label">State</label>
+                                        <label for="state" class="form-label">City</label>
                                         <select class="form-select" id="state" required>
                                             <option value="">Choose...</option>
-                                            <option>California</option>
+                                            <option>Marrakech</option>
                                         </select>
                                         <div class="invalid-feedback">
-                                            Please provide a valid state.
+                                            Please provide a valid city.
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -86,6 +87,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr class="my-4">
+                                <h4 class="mb-3">Payment</h4>
+                                <label for="card-element">Credit or debit card</label>
+                                <div id="card-element" class="form-control form-control-payment">
+                                <!-- Payment elements will appear here -->
+                                </div>
+                                <hr class="my-4">
+                                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay</button>
                             </form>
                         </div>
                     </div>
@@ -94,5 +103,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    {% comment %} Make csrf token availble in JS files {% endcomment %}
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'payment/index.js' %}" data-rel-js></script>
 
 {% endblock %}
