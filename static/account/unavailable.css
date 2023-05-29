@@ -1,0 +1,7 @@
+.unavailable-book {
+    background-color: #f8f8f8 !important;
+    padding: 15px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    color: #fd0202 !important;
+}
