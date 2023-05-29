@@ -1,7 +1,25 @@
 .basket-qty{
-    color: #fff;
-    background: #161414;
-    border: 2px solid #fff;
+    color: #fffafa;
+    background: #b90000 !important;
+    border: 2px solid #db0000 !important;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 11px;
+    height: 15px;
+    width: 14px;
+    position: absolute;
+    box-sizing: content-box;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1px;
+    right: 10px;
+}
+#basket-qty{
+    color: #000000 !important;
+    background: #db0000 !important;
+    border: 2px solid #db0000 !important;
     border-radius: 50%;
     text-align: center;
     font-size: 11px;
@@ -22,7 +40,7 @@
 }
 
 .basket-btn:hover, .basket-btn:focus, .basket-btn:active, .basket-btn.active{
-    color:#51d414;
+    
     transition-duration: 0.4s;
-    background-color: #f57e7e
+    
 }

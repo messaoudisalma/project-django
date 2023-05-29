@@ -42,7 +42,7 @@
             <div class="service">
                 <div class="customize">			
                     <img src="{% static 'store/themes/images/feature_img_1.png' %}" alt="" />
-                    <h5>FREE <strong>SHIPPING</strong></h5>
+                    <h5>BEST <strong>PRODUCTS</strong></h5>
                 </div>
             </div>
         </div>
@@ -60,33 +60,119 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-heading">
+                    <div class="section-heading" style="margin-bottom: 0;">
                         <h2>Popular</h2>
-                        <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <style>
+                    .custom-border {
+                        border: 2px solid #f33f3f;
+                    }
+                
+                    .custom-image-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                
+                    .custom-image-container .col {
+                        flex-basis: 20%;
+                        max-width: 20%;
+                        padding: 0 10px;
+                    }
+    
+                    .custom-image-container .img-fluid {
+                        max-width: 160px; /* Ajustez cette valeur en fonction de la taille souhaitée */
+                        max-height: 250px; /* Ajustez cette valeur en fonction de la taille souhaitée */
+                    }                    
+                
+                    .read-more-button {
+                        display: none;
+                        margin-top: 20px;
+                        text-align: center;
+                    }
+
+                    /* CSS personnalisé pour le bouton "Read More" */
+                    .read-more-button .btn {
+                        background-color: #f33f3f;
+                        color: #ffffff;
+                        border: none;
+                        border-radius: 5px;
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        transition: background-color 0.3s ease;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    }
+
+                    .read-more-button .btn:hover {
+                        background-color: #d32f2f;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .read-more-button .btn:focus {
+                        outline: none;
+                    }
+
+                </style>
+                
                 <div class="album py-5">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+                    <div class="custom-image-container" id="imageContainer">
                         {% for product in products %}
                             <div class="col">
                                 <div class="card border-0">
-                                    <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+                                    <img class="img-fluid img-thumbnail custom-border" alt="Responsive image" src="{{ product.image.url }}">
                                     <div class="card-body px-0">
                                         <p class="card-text">
-                                            <a class="text-dark text-decoration-none"
-                                                href="{{ product.get_absolute_url }}">{{ product.title|slice:":50" }}...</a>
+                                            <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title|slice:":50" }}...</a>
                                         </p>
-                                        <div class="fw-bold">${{product.price}}</div>
+                                        <div class="fw-bold">${{ product.price }}</div>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
+                    <div class="read-more-button" id="readMoreButtonContainer">
+                        <button class="btn btn-warning" id="readMoreButton">Read More</button>
+                    </div>
                 </div>
+                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        var imagesPerPage = 15;
+                        var imageContainer = $('#imageContainer');
+                        var images = imageContainer.children('.col');
+                        var totalImages = images.length;
+                        var visibleImages = imagesPerPage;
+                
+                        // Afficher ou masquer le bouton "Read More"
+                        if (totalImages > imagesPerPage) {
+                            $('#readMoreButtonContainer').show();
+                        } else {
+                            $('#readMoreButtonContainer').hide();
+                        }
+                
+                        // Cacher les images excédentes
+                        images.slice(visibleImages).hide();
+                
+                        // Gérer le clic sur le bouton "Read More"
+                        $('#readMoreButton').click(function() {
+                            visibleImages += imagesPerPage;
+                            images.slice(0, visibleImages).show();
+                            if (visibleImages >= totalImages) {
+                                $('#readMoreButtonContainer').hide();
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
-    </div>
-
+    </div>    
+    
     <div class="best-features">
         <div class="container">
             <div class="row">
