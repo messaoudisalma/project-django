@@ -6,6 +6,13 @@
 {% block content %}
 <main class="pt-5">
     <div class="container pt-5" style="max-width: 1000px">
+        {% if messages %}
+        <div class="alert alert-warning" alert-{{ message.tags }} role="alert">
+            {% for message in messages  %}
+            {{message|safe}} - <a href="{% url "account:wishlist" %}" class="alert-link">Your Wishlist</a>.
+            {% endfor %}
+        </div>
+        {% endif %}
   
         <div class="row g-3">
             <div class="col-12 d-flex justify-content-between">
@@ -23,12 +30,13 @@
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                     </div>
                     <hr>
                     <button type="button" id="add-button" value="{{product.id}}" class="btn btn-success fw500">Add to basket</button>
-                    <button type="button" id="add-button" value="{{product.id}}" class="btn btn-light fw500">Add to Favorites</button>
+                    <a href="{% url "account:user_wishlist" product.id  %}" class="btn btn-light fw500" role="button" aria-disabled="true">Add to Wish List</a>
                 </div>
             </div>
   
@@ -49,6 +57,22 @@
 </main>
   
 <script>
+    {% comment %} $(document).ready(function () {
+        var wishlistButton = $("#wishlist-button");
+
+        // Gérer le clic sur le bouton "Add to Wishlist"
+        wishlistButton.on('click', function (e) {
+            e.preventDefault();
+
+            // Mettre à jour le texte du bouton en fonction de l'état actuel
+            if (wishlistButton.text() === "Add to Wish List") {
+                wishlistButton.text("Remove from Wishlist");
+            } else {
+                wishlistButton.text("Add to Wish List");
+            }
+        });
+    }); {% endcomment %}
+
     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({

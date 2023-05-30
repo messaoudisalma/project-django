@@ -36,6 +36,7 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
     objects = models.Manager()
     products = ProductManager()
+    users_wishlist = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="user_wishlist", blank=True)
 
     class meta:
         verbose_name = 'Product'
