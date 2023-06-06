@@ -20,7 +20,9 @@
             <h5 class="card-title">{{product.title}}</h5>
             <p class="card-text">{{product.description}}</p>
             <p class="card-text"><small class="text-muted">{{product.regular_price}}</small></p><hr>
-            <a type="button" class="btn btn-primary fw500 btn-sm" href="{% url 'account:user_wishlist' product.id %}">Remove from Wishlist</a>
+            <a type="button" style="background-color: #DC3545; height: 50px; width: 170px; display: flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 5px; padding: 0 10px; color: white; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); transform: translate(0px, -1px) perspective(1px) translateZ(0);" class="btn btn-primary fw500 btn-sm" href="{% url 'account:user_wishlist' product.id %}">
+              <span style="margin-right: 5px;">Remove from Wishlist</span>
+            </a>                                     
           </div>
         </div>
       </div>

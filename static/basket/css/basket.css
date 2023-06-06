@@ -1,7 +1,7 @@
 .basket-qty{
-    color: #250000 !important;
-    background: #db0000 !important;
-    border: 2px solid #db0000 !important;
+    color: #ffffff !important;
+    background: #fa0000 !important;
+    border: 2px solid #fa0000 !important;
     border-radius: 50%;
     text-align: center;
     font-size: 11px;
@@ -18,8 +18,8 @@
 }
 #basket-qty{
     color: #ffffff !important;
-    background: #db0000 !important;
-    border: 2px solid #db0000 !important;
+    background: #fa0000 !important;
+    border: 2px solid #fa0000 !important;
     border-radius: 50%;
     text-align: center;
     font-size: 11px;

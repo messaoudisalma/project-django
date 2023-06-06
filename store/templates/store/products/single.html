@@ -22,7 +22,7 @@
             <div class="col-md-5 ps-3 col-lg-5 order-md-last p-0 order-1">
                 <div class="d-grid gap-2">
                     <div class="d-flex d-flex-inline justify-content-between">
-                        <div><span class="h3">${{ product.price }}</span><p class="text-muted">includes tax</p></div>
+                        <div><span class="h3">${{ product.price }}</span></div>
                         <div class="">
                             <label for="select">Qty</label>
                             <select id="select" class="h6" style="width:50px;height:40px;">
@@ -34,6 +34,7 @@
                             </select>
                         </div>
                     </div>
+                    <p>{{ product.description|slice:":355" }}</p>
                     <hr>
                     <button type="button" id="add-button" value="{{product.id}}" class="btn btn-success fw500">Add to basket</button>
                     <a href="{% url "account:user_wishlist" product.id  %}" class="btn btn-light fw500" role="button" aria-disabled="true">Add to Wish List</a>
@@ -57,22 +58,6 @@
 </main>
   
 <script>
-    {% comment %} $(document).ready(function () {
-        var wishlistButton = $("#wishlist-button");
-
-        // Gérer le clic sur le bouton "Add to Wishlist"
-        wishlistButton.on('click', function (e) {
-            e.preventDefault();
-
-            // Mettre à jour le texte du bouton en fonction de l'état actuel
-            if (wishlistButton.text() === "Add to Wish List") {
-                wishlistButton.text("Remove from Wishlist");
-            } else {
-                wishlistButton.text("Add to Wish List");
-            }
-        });
-    }); {% endcomment %}
-
     $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
         $.ajax({
