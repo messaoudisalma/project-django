@@ -3,7 +3,90 @@
 
 {% block content %}
 
-<div class="pt-5 col-12 mx-auto">
+<style>
+  .btn-custom {
+    color: black;
+    border: 2px solid black;
+    border-radius: 0;
+    text-align: center;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  
+  .btn-custom:hover {
+    color: #f33f3f;
+    border-color: #f33f3f;
+  }  
+
+  /* Supprime la couleur bleue lors du clic */
+  .btn-custom:active,
+  .btn-custom:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  .custom-image {
+    max-width: 150px; /* Définissez la largeur maximale souhaitée pour l'image */
+    height: auto; /* Pour conserver les proportions de l'image */
+  }
+</style>
+
+<div class="page-heading wishlist-heading header-text">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="text-content">
+                  <h4>Wishlist</h4>
+                  <h2>Favorite Books</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-12 mx-auto">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h1 class="h3 pt-5">My Wishlist</h1>
+      <div class="pt-4 pb-4">Manage your Wishlist</div>
+      
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="align-middle"></th>
+              <th class="align-middle">PRODUCT NAME</th>
+              <th class="align-middle">UNIT PRICE</th>
+              <th class="align-middle">STOCK STATUS</th>
+              <th class="align-middle"></th>
+              <th class="align-middle"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if wishlist %}
+            {% for product in wishlist  %}
+            <tr>
+              <td class="align-middle"><img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid p-2 custom-image"></td>
+              <td class="align-middle">{{ product.title }}</td>
+              <td class="align-middle" style="font-weight: bold;">{{ product.price }} $</td>
+              <td class="align-middle" style= "color: #f33f3f;">In Stock</td>
+              <td class="align-middle"><button class="btn btn-custom">Add to basket</button></td>
+              <td class="align-middle"><a type="button" class="btn btn-custom" href="{% url 'account:user_wishlist' product.id %}">Remove from Wishlist</a></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="6" class="text-center"><p class="card-text">No products have been added to your wishlist yet</p></td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% comment %} <div class="col-12 mx-auto">
   <div class="row">
     <div class="col-md-9 mx-auto">
       <h1 class="h3 pt-5">My Wishlist</h1>
@@ -32,6 +115,6 @@
       {% endif %}
     </div>
   </div>
-</div>
+</div> {% endcomment %}
 
 {% endblock %}

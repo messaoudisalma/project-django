@@ -100,6 +100,10 @@ a.filled-button:hover {
 	background-image: url(../images/contact-heading.jpg);
 }
 
+.wishlist-heading {
+	background-image: url(../images/5.webp);
+}
+
 .page-heading {
 	padding: 210px 0px 130px 0px;
 	text-align: center;
