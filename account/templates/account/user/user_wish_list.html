@@ -69,7 +69,9 @@
               <td class="align-middle">{{ product.title }}</td>
               <td class="align-middle" style="font-weight: bold;">{{ product.price }} $</td>
               <td class="align-middle" style= "color: #f33f3f;">In Stock</td>
-              <td class="align-middle"><button class="btn btn-custom">Add to basket</button></td>
+              <td class="align-middle">
+                <button class="btn btn-custom add-to-basket" data-product-id="{{ product.id }}">Add to basket</button>
+              </td>
               <td class="align-middle"><a type="button" class="btn btn-custom" href="{% url 'account:user_wishlist' product.id %}">Remove from Wishlist</a></td>
             </tr>
             {% endfor %}
@@ -86,35 +88,28 @@
 </div>
 
 
-{% comment %} <div class="col-12 mx-auto">
-  <div class="row">
-    <div class="col-md-9 mx-auto">
-      <h1 class="h3 pt-5">My Wishlist</h1>
-      <div class="pt-4">Manage your Wishlist</div>
-      <hr />
-      {% if wishlist %}
-      {% for product in wishlist  %}
-      <div class="row my-3"  style="border: 2px solid black;">
-        <div class="col-md-2">
-          <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid p-3">
-        </div>
-        <div class="col-md-6">
-          <div class="card-body p-2">
-            <h5 class="card-title">{{product.title}}</h5>
-            <p class="card-text">{{product.description}}</p>
-            <p class="card-text"><small class="text-muted">{{product.regular_price}}</small></p><hr>
-            <a type="button" style="background: linear-gradient(to bottom, #000000, #000000); color: white; font-weight: bold; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); width: 200px; height: 50px; display: flex; align-items: center; justify-content: center;" class="btn fw500 btn-sm" href="{% url 'account:user_wishlist' product.id %}">
-              <span style="margin-right: 5px;">Remove from Wishlist</span>
-            </a>                                     
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-      {% else %}
-      <p class="card-text">No products have been added to your wishlist yet</p>
-      {% endif %}
-    </div>
-  </div>
-</div> {% endcomment %}
-
+<script>
+  $(document).on('click', '.add-to-basket', function (e) {
+      e.preventDefault();
+      var productId = $(this).data('product-id');
+      var productQty = 1; // Mettez la quantité souhaitée ici
+      $.ajax({
+          type: 'POST',
+          url: "{% url 'basket:basket_add' %}",
+          data: {
+              productid: productId,
+              productqty: productQty,
+              csrfmiddlewaretoken: "{{ csrf_token }}",
+              action: 'post'
+          },
+          success: function (json) {
+              document.getElementById("basket-qty").innerHTML = json.qty;
+              alert('Product added to basket successfully!');
+          },
+          error: function (xhr, errmsg, err) {
+              alert('Failed to add product to basket.');
+          }
+      });
+  });
+</script>
 {% endblock %}

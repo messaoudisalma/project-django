@@ -81,8 +81,11 @@
             },
             success: function (json) {
                 document.getElementById("basket-qty").innerHTML = json.qty
+                alert('Product added to basket successfully!');
             },
-            error: function (xhr, errmsg, err) {}
+            error: function (xhr, errmsg, err) {
+                alert('Failed to add product to basket.');
+            }
         });
     })
 </script>
