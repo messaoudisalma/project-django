@@ -28,6 +28,10 @@
     max-width: 150px; /* Définissez la largeur maximale souhaitée pour l'image */
     height: auto; /* Pour conserver les proportions de l'image */
   }
+
+  .custom-border {
+    border: 2px solid #f33f3f;
+  }
 </style>
 
 <div class="page-heading wishlist-heading header-text">
@@ -75,7 +79,7 @@
             {% if wishlist %}
             {% for product in wishlist  %}
             <tr>
-              <td class="align-middle"><img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid p-2 custom-image"></td>
+              <td class="align-middle"><img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid p-2 custom-image custom-border"></td>
               <td class="align-middle">{{ product.title }}</td>
               <td class="align-middle" style="font-weight: bold;">{{ product.price }} $</td>
               <td class="align-middle" style= "color: #f33f3f;">In Stock</td>
