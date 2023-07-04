@@ -3,82 +3,185 @@
 {% block title %}Basket Summary{% endblock %}
 {% block content %}
 
-<main class="pt-5">
+<style>
+  .product-group {
+    border: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    position: relative; /* Ajout de la propriété position */
+  }
+  .product-group::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; /* Modification de la position */
+    width: 8px;
+    height: 100%;
+    background-color: #717777;
+  }
+  .product-item {
+    position: relative;
+  }
+  .product-item .col-md-2 {
+    padding-left: 30px !important;
+  }
+  .product-item img {
+    border: 2px solid #f33f3f;
+  }
+  .product-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -3px;
+    width: calc(100% + 14px); /* Augmenter la largeur de la ligne */
+    height: 1px;
+    background-color: #ccc;
+  }
+  .update-button,
+  .delete-button {
+    font-size: 14px !important; 
+    color: #717777 !important; 
+    text-decoration: none !important; 
+    margin-top: 5px !important; 
+    display: inline-block !important; 
+    font-weight: bold !important;
+  }
+
+  .update-button:hover,
+  .delete-button:hover {
+    text-decoration: underline !important; 
+  }
+  .checkout-section {
+    margin-left: 25px !important;
+  }
+  .save-for-later {
+    position: relative;
+    display: inline-block;
+  }
+  .save-later {
+    font-weight: bold !important; 
+    color: #f33f3f !important;
+    font-weight: bold !important;
+  }
+  .save-later:hover {
+    text-decoration: underline !important; 
+  }
+  .checkout {
+    border-radius: 0 !important;
+    background-color: #717777;
+    color: white;
+  }
+  .checkout:hover {
+    background-color: #f33f3f;
+    color: white;
+  }
+</style>
+
+<div class="page-heading wishlist-heading header-text">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="text-content">
+                  <h4>Basket</h4>
+                  <h2>Manage your items in your basket</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<main>
   <div class="container pt-5" style="max-width: 1000px">
     <div class="col-12">
-      <h1 class="h2">Your Basket</h1>
-    </div>
-    <div class="col-12">
-      <p>Manage your <b>items</b> in your basket</p>
+      <h1 class="h2">My Orders</h1>
     </div>
     <hr />
   </div>
   <div class="container" style="max-width: 1000px">
     
     <div class="row g-3">
-      <div class="col-12 bg-light p-3 d-flex justify-content-between">
-        <div class="d-flex d-flex-inline">
-          <div class="pe-3">Order</div>
-          <div class="dropdown">
-          <a class="text-reset text-decoration-none dropdown-toggle" href="#" role="link" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">
-          Shipping options
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-          </svg>
-          </a>
-
-          <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-            <li class="item small">Next day delivery</li>
-            <li class="item small">Premimum delivery</li>
-          </ul>
-          </div>
-        </div>
-        <div class="text-end">
-          
-          <div class="">Sub Total: <span class="fw-bold">$</span><div id="subtotal" class="d-inline-flex fw-bold">{{basket.get_subtotal_price}}</div></div>
-          <div id="">Shipping <span class="small">(Next day delivery)</span>: <span class="fw-bold">$11.50</span></div>
-          <div class="pt-2">Total to pay: <span class="fw-bold h5">$</span><span id="total" class="fw-bold h5">{{basket.get_total_price}}</span></div>
-          
-        </div>
-      </div>
-      <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
-        <div class="d-grid gap-2 ">
-          <a role="button" href="{% url "payment:basket" %}" class="btn btn-success fw-bold" type="button">Checkout</a>
-          <button class="btn btn-light" type="button">Save for later</button>
-        </div>
+      <div class="col-md-4 col-lg-3 order-md-last p-0 order-3 checkout-section">
+        <table class="table table-bordered mt-3">
+          <tbody>
+            <tr>
+              <td class="text-center align-middle" style="font-weight: bold !important;">Order Total</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div>Sub Total</div>
+                  <div id="subtotal" class="d-inline-flex fw-bold">${{basket.get_subtotal_price}}</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div>Shipping</div>
+                  <div id="" class="d-inline-flex fw-bold">$11.50</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div>Total to pay</div>
+                  <div id="total" class="d-inline-flex fw-bold">${{basket.get_total_price}}</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex justify-content-center">
+                  <a type="button" class="text-decoration-none small save-later">Save for later</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-grid gap-2 ">
+                  <a role="button" href="{% url "payment:basket" %}" class="checkout btn fw-bold" type="button">Checkout</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="col-md-7 col-lg-8 p-0">
+        <div class="product-group">
 
-        {% for item in basket %} 
-        {% with product=item.product %}
+          {% for item in basket %} 
+          {% with product=item.product %}
 
-        <div class="card mb-3 border-0 product-item" data-index="{{product.id}}">
-          <div class="row g-0">
-            <div class="col-md-2 d-none d-md-block">
-              <img class="img-fluid mx-auto d-block" alt="Responsive image"
-                  src="{{ product.image.url }}" />
-            </div>
-            <div class="col-md-10 ps-md-3">
-              <div class="card-body p-1">
-                <a class="text-decoration-none text-reset" href="{{item.product.get_absolute_url}}">
-                  <p class="card-text pb-3">{{product.title}}</p>
-                </a>
-                    <label for="select">Qty</label>
-                    <select id="select{{product.id}}" style="width:50px;height:31px;">
-                      <option value="" selected disabled hidden>{{item.qty}}</option>
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4</option>
-                    </select>
-                <a type="button" id="update-button" data-index="{{product.id}}" class="update-button text-decoration-none small ps-3">Update</a>
-                <a type="button" id="delete-button" data-index="{{product.id}}" class="delete-button text-decoration-none small">Delete</a>
+          <div class="card mb-3 border-0 product-item" data-index="{{product.id}}">
+            <div class="row g-0">
+              <div class="col-md-2 d-none d-md-block">
+                <img class="img-fluid mx-auto d-block" alt="Responsive image" src="{{ product.image.url }}" />
+              </div>
+              <div class="col-md-10 ps-md-3">
+                <div class="card-body p-1">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <a class="text-decoration-none text-reset" href="{{item.product.get_absolute_url}}">
+                        <p class="card-text pb-3" style="font-weight: bold !important;">{{product.title}}</p>
+                      </a>
+                          <label for="select">Qty</label>
+                          <input type="number" id="select{{product.id}}" />
+                      <a type="button" id="update-button" data-index="{{product.id}}" class="update-button text-decoration-none small ps-3">Update</a>
+                      <a type="button" id="delete-button" data-index="{{product.id}}" class="delete-button text-decoration-none small">Delete</a>
+                    </div>
+                    <div>
+                      <div class="h5" style="padding-top : 15px; color: #f33f3f !important;">${{ product.price }}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          {% endwith %} 
+          {% endfor %}
         </div>
-        {% endwith %} 
-        {% endfor %}
       </div>
     </div>
     
